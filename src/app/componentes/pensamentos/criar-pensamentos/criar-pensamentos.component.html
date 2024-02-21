@@ -10,16 +10,27 @@
             class="input"
             id="pensamento"
             formControlName="conteudo"
-            placeholder="Digite o pensamento"
-            >
+            placeholder="Digite o pensamento">
+
+    <div class="mensagem__erro" *ngIf="form.get('conteudo')?.errors?.['required'] && form.get('conteudo')?.touched">
+      Preenchimento Obrigatório!
+    </div>
+    <div class="mensagem__erro" *ngIf="form.get('conteudo')?.errors?.['minlength'] && form.get('conteudo')?.touched">
+      Minimo 5 caracteres!
+    </div>
 
     <label for="autoria">Autoria ou Fonte</label>
-    <input  type="text"
-            class="input"
-            id="autoria"
-            formControlName="autoria"
-            placeholder="Digite a autoria ou fonte"
-            >
+    <input type="text" class="input" id="autoria" formControlName="autoria" placeholder="Digite a autoria ou fonte">
+
+    <div class="mensagem__erro" *ngIf="form.get('autoria')?.errors?.['required'] && form.get('autoria')?.touched">
+      Preenchimento Obrigatório!
+    </div>
+    <div class="mensagem__erro" *ngIf="form.get('autoria')?.errors?.['minlength'] && form.get('autoria')?.touched">
+      Minimo 5 caracteres!
+    </div>
+    <div class="mensagem__erro" *ngIf="form.get('autoria')?.errors?.['minusculo'] && form.get('autoria')?.touched">
+      Apenas minusculo!
+    </div>
 
     <label for="modelo">Selecione o modelo do card:</label>
 
@@ -36,13 +47,13 @@
         <div class="modelo modelo1 ff-roboto-mono">
           <img src="../../../../assets/imagens/modelo1.png" alt="Aspas azuis">
           <p class="conteudo" *ngIf="form.get('modelo')?.value=='modelo1'">{{ form.get('conteudo')?.value }}</p>
-          <p class="autoria" *ngIf="form.get('modelo')?.value=='modelo1'">{{ form.get('autoria')?.value  }}</p>
+          <p class="autoria" *ngIf="form.get('modelo')?.value=='modelo1'">{{ form.get('autoria')?.value }}</p>
         </div>
       </div>
 
       <div class="radio-modelo">
         <label for="modelo2">
-          <input type="radio" id="modelo2" value="modelo2" formControlName="modelo" >
+          <input type="radio" id="modelo2" value="modelo2" formControlName="modelo">
           <div class="custom-radio">
             <span></span>
           </div>
@@ -51,13 +62,13 @@
         <div class="modelo modelo2 ff-roboto-mono">
           <img src="../../../../assets/imagens/modelo2.png" alt="Aspas azul-claro">
           <p class="conteudo" *ngIf="form.get('modelo')?.value=='modelo2'">{{ form.get('conteudo')?.value }}</p>
-          <p class="autoria" *ngIf="form.get('modelo')?.value=='modelo2'">{{ form.get('autoria')?.value  }}</p>
+          <p class="autoria" *ngIf="form.get('modelo')?.value=='modelo2'">{{ form.get('autoria')?.value }}</p>
         </div>
       </div>
 
       <div class="radio-modelo">
         <label for="modelo3">
-          <input type="radio" id="modelo3" value="modelo3" formControlName="modelo" >
+          <input type="radio" id="modelo3" value="modelo3" formControlName="modelo">
           <div class="custom-radio">
             <span></span>
           </div>
@@ -66,17 +77,20 @@
         <div class="modelo modelo3 ff-roboto-mono">
           <img src="../../../../assets/imagens/modelo3.png" alt="Aspas verde">
 
-          <p class="conteudo"*ngIf="form.get('modelo')?.value=='modelo3'">{{ form.get('conteudo')?.value }}</p>
+          <p class="conteudo" *ngIf="form.get('modelo')?.value=='modelo3'">{{ form.get('conteudo')?.value }}</p>
           <p class="autoria" *ngIf="form.get('modelo')?.value=='modelo3'">{{ form.get('autoria')?.value }}</p>
         </div>
       </div>
 
     </div>
 
-      <div class="acoes">
-        <p class="botao" (click)="criarPensamento()">Salvar</p>
-        <button class="botao" (click)="cancelar()">Cancelar</button>
-      </div>
+    <div class="acoes">
+      <button
+      [disabled]="!form.valid"
+      [ngClass]="habilitarBotao()"
+      (click)="criarPensamento()">Salvar</button>
+      <button class="botao" (click)="cancelar()">Cancelar</button>
+    </div>
 
   </form>
 </section>

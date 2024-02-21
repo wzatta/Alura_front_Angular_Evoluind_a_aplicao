@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pensamento } from 'src/app/model/pensamento';
 import { PensamentoService } from 'src/app/services/pensamento.service';
@@ -10,17 +11,13 @@ import { PensamentoService } from 'src/app/services/pensamento.service';
 })
 export class EditarPensamentoComponent implements OnInit {
 
-  pensamento: Pensamento = {
-    id: '',
-    conteudo: '',
-    autoria: '',
-    modelo: ''
-  }
+  formEdit!: FormGroup;
 
-  constructor(
+   constructor(
     private service: PensamentoService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
   ){
   }
 
@@ -28,16 +25,22 @@ export class EditarPensamentoComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')??'';
     this.service.buscarPorId(id).subscribe((result)=> {
-      this.pensamento = result;
+      this.formEdit = this.formBuilder.group({
+        id:[result.id],
+        conteudo:[result.conteudo,[Validators.required, Validators.minLength(5)]],
+        autoria: [result.autoria, [Validators.required, Validators.minLength(5)]],
+        modelo:  [result.modelo, [Validators.required]]
+      })
     })
   }
 
   editarPensamento(){
-    this.service.editar(this.pensamento).subscribe((result)=>{
-      this.pensamento = result;
-      this.router.navigate(['/listarPensamento'])
+    if(this.formEdit.valid){
+    this.service.editar(this.formEdit.value).subscribe(()=>{
+      this.router.navigate(['/listarPensamento']);
     })
   }
+}
 
   cancelar(){
     this.router.navigate(['/listarPensamento']);

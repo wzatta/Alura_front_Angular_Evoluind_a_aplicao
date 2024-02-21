@@ -4,22 +4,36 @@
     <h2>Adicione um <br>pensamento novo:</h2>
   </header>
 
-  <form>
+  <form [formGroup]="formEdit" *ngIf="formEdit">
     <label for="pensamento">Pensamento</label>
     <input  type="textarea"
             class="input"
             id="pensamento"
-            name="pensamento"
-            placeholder="Digite o pensamento"
-            [(ngModel)]="pensamento.conteudo">
+            formControlName="conteudo"
+            placeholder="Digite o pensamento"/>
+
+            <div class="mensagem__erro" *ngIf="formEdit.get('conteudo')?.errors?.['required'] && formEdit.get('conteudo')?.touched">
+              Preenchimento Obrigatório!
+            </div>
+            <div class="mensagem__erro" *ngIf="formEdit.get('conteudo')?.errors?.['minlength'] && formEdit.get('conteudo')?.touched">
+              Minimo 5 caracteres!
+            </div>
 
     <label for="autoria">Autoria ou Fonte</label>
     <input  type="text"
             class="input"
             id="autoria"
-            name="autoria"
+            formControlName="autoria"
             placeholder="Digite a autoria ou fonte"
-            [(ngModel)]="pensamento.autoria">
+            />
+
+            <div class="mensagem__erro" *ngIf="formEdit.get('autoria')?.errors?.['required'] && formEdit.get('autoria')?.touched">
+              Preenchimento Obrigatório!
+            </div>
+            <div class="mensagem__erro" *ngIf="formEdit.get('autoria')?.errors?.['minlength'] && formEdit.get('autoria')?.touched">
+              Minimo 5 caracteres!
+            </div>
+
 
     <label for="modelo">Selecione o modelo do card:</label>
 
@@ -27,7 +41,7 @@
 
       <div class="radio-modelo">
         <label for="modelo1">
-          <input type="radio" id="modelo1" value="modelo1" name="modelo-card" [(ngModel)]="pensamento.modelo">
+          <input type="radio" id="modelo1" value="modelo1" formControlName="modelo">
           <div class="custom-radio">
             <span></span>
           </div>
@@ -35,14 +49,14 @@
         </label>
         <div class="modelo modelo1 ff-roboto-mono">
           <img src="../../../../assets/imagens/modelo1.png" alt="Aspas azuis">
-          <p class="conteudo" *ngIf="pensamento.modelo==='modelo1'">{{ pensamento.conteudo }}</p>
-          <p class="autoria" *ngIf="pensamento.modelo==='modelo1'">{{ pensamento.autoria }}</p>
+          <p class="conteudo" *ngIf="formEdit.get('modelo')?.value==='modelo1'">{{ formEdit.get('conteudo')?.value }}</p>
+          <p class="autoria" *ngIf="formEdit.get('modelo')?.value==='modelo1'">{{ formEdit.get('autoria')?.value }}</p>
         </div>
       </div>
 
       <div class="radio-modelo">
         <label for="modelo2">
-          <input type="radio" id="modelo2" value="modelo2" name="modelo-card" [(ngModel)]="pensamento.modelo">
+          <input type="radio" id="modelo2" value="modelo2" formControlName="modelo">
           <div class="custom-radio">
             <span></span>
           </div>
@@ -50,14 +64,14 @@
         </label>
         <div class="modelo modelo2 ff-roboto-mono">
           <img src="../../../../assets/imagens/modelo2.png" alt="Aspas azul-claro">
-          <p class="conteudo" *ngIf="pensamento.modelo==='modelo2'">{{ pensamento.conteudo }}</p>
-          <p class="autoria" *ngIf="pensamento.modelo==='modelo2'">{{ pensamento.autoria }}</p>
+          <p class="conteudo" *ngIf="formEdit.get('modelo')?.value==='modelo2'">{{ formEdit.get('conteudo')?.value }}</p>
+          <p class="autoria" *ngIf="formEdit.get('modelo')?.value==='modelo2'">{{ formEdit.get('autoria')?.value }}</p>
         </div>
       </div>
 
       <div class="radio-modelo">
         <label for="modelo3">
-          <input type="radio" id="modelo3" value="modelo3" name="modelo-card" [(ngModel)]="pensamento.modelo">
+          <input type="radio" id="modelo3" value="modelo3" formControlName="modelo">
           <div class="custom-radio">
             <span></span>
           </div>
@@ -66,15 +80,15 @@
         <div class="modelo modelo3 ff-roboto-mono">
           <img src="../../../../assets/imagens/modelo3.png" alt="Aspas verde">
 
-          <p class="conteudo"*ngIf="pensamento.modelo==='modelo3'">{{ pensamento.conteudo }}</p>
-          <p class="autoria" *ngIf="pensamento.modelo==='modelo3'">{{ pensamento.autoria}}</p>
+          <p class="conteudo"*ngIf="formEdit.get('modelo')?.value==='modelo3'">{{ formEdit.get('conteudo')?.value }}</p>
+          <p class="autoria" *ngIf="formEdit.get('modelo')?.value==='modelo3'">{{ formEdit.get('autoria')?.value }}</p>
         </div>
       </div>
 
     </div>
 
       <div class="acoes">
-        <p class="botao" (click)="editarPensamento()">Salvar</p>
+        <button class="botao" (click)="editarPensamento()">Salvar</button>
         <button class="botao" (click)="cancelar()">Cancelar</button>
       </div>
 
