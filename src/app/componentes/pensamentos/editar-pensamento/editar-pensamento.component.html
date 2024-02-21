@@ -88,7 +88,10 @@
     </div>
 
       <div class="acoes">
-        <button class="botao" (click)="editarPensamento()">Salvar</button>
+        <button
+        [disabled]="!formEdit.valid"
+        [ngClass]="habilitarBotao()"
+        (click)="editarPensamento()">Salvar</button>
         <button class="botao" (click)="cancelar()">Cancelar</button>
       </div>
 

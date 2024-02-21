@@ -10,15 +10,27 @@ import { Observable } from 'rxjs';
   styleUrls: ['./listar-pensamentos.component.css']
 })
 export class ListarPensamentosComponent implements OnInit {
+
   listaPensamentos: Pensamento[] = [];
+  paginaAtual: number = 1;
+  haMaisPensamentos:boolean = true;
 
   constructor(private service: PensamentoService){
   }
 
   ngOnInit(): void {
-    this.service.listar().subscribe((result)=>{
+    this.service.listar(this.paginaAtual).subscribe((result)=>{
       this.listaPensamentos = result;
     });
+  }
+
+  carregarMaisPensamentos(){
+    this.service.listar(++this.paginaAtual).subscribe(result => {
+      this.listaPensamentos.push(...result);
+      if(!result.length){
+        this.haMaisPensamentos = false;
+      }
+    })
   }
 
   adicionarPensamentos() {

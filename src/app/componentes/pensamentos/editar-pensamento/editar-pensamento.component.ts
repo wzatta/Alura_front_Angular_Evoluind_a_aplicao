@@ -46,4 +46,12 @@ export class EditarPensamentoComponent implements OnInit {
     this.router.navigate(['/listarPensamento']);
   }
 
+  habilitarBotao():string {
+    if(this.formEdit.valid){
+      return 'botao';
+    } else {
+      return 'botao__desabilitado';
+    }
+  }
+
 }
