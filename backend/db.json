@@ -4,78 +4,91 @@
       "conteudo": "WaldyrZatta Junior",
       "autoria": "a teste",
       "modelo": "modelo1",
+      "favorito": false,
       "id": 1
     },
     {
       "conteudo": "Estou aprendendo com a Nai",
       "autoria": "desenvolvendo aprendiz",
       "modelo": "modelo2",
+      "favorito": false,
       "id": 2
     },
     {
       "conteudo": "angular o melhor",
       "autoria": "desenvolvedor",
       "modelo": "modelo3",
+      "favorito": false,
       "id": 3
     },
     {
       "conteudo": "Lucas",
       "autoria": "santos zatta",
       "modelo": "modelo1",
+      "favorito": false,
       "id": 4
     },
     {
       "conteudo": "Matheus",
       "autoria": "santos zatta",
       "modelo": "modelo3",
+      "favorito": false,
       "id": 5
     },
     {
       "conteudo": "Edisilene",
       "autoria": "santos zatta",
       "modelo": "modelo2",
+      "favorito": false,
       "id": 6
     },
     {
       "conteudo": "Waldyr ",
       "autoria": "zatta junior",
       "modelo": "modelo1",
+      "favorito": false,
       "id": 7
     },
     {
       "conteudo": "Joao Ronaldo",
       "autoria": "zatta",
       "modelo": "modelo1",
+      "favorito": false,
       "id": 8
     },
     {
       "id": 9,
       "conteudo": "Heliane ",
       "autoria": "sueli zatta Almeida",
-      "modelo": "modelo3"
+      "modelo": "modelo3",
+      "favorito": false
     },
     {
       "conteudo": "Testando o front",
       "autoria": "ficou top",
       "modelo": "modelo1",
+      "favorito": false,
       "id": 10
     },
     {
       "conteudo": "Jose augusto",
       "autoria": "zatta",
       "modelo": "modelo2",
+      "favorito": true,
       "id": 11
     },
     {
       "conteudo": "Vera Lucia",
       "autoria": "zatta trindade",
       "modelo": "modelo1",
+      "favorito": true,
       "id": 12
     },
     {
       "conteudo": "Edson nunes",
       "autoria": "almeida",
       "modelo": "modelo2",
+      "favorito": false,
       "id": 13
     }
   ]

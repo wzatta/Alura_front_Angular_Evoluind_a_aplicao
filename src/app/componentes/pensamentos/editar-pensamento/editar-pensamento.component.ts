@@ -29,7 +29,8 @@ export class EditarPensamentoComponent implements OnInit {
         id:[result.id],
         conteudo:[result.conteudo,[Validators.required, Validators.minLength(5)]],
         autoria: [result.autoria, [Validators.required, Validators.minLength(5)]],
-        modelo:  [result.modelo, [Validators.required]]
+        modelo:  [result.modelo, [Validators.required]],
+        favorito: [result.favorito]
       })
     })
   }
