@@ -1,3 +1,14 @@
+.botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.butoes button {
+  margin-left: 10px;
+}
+
+
 .mural {
   display: flex;
   flex-wrap: wrap;
@@ -6,7 +17,7 @@
   margin: 1rem 0 2rem;
 }
 
-.d-flex{
+.d-flexi{
   display: flex;
   flex-direction: column;
   gap: 2rem;

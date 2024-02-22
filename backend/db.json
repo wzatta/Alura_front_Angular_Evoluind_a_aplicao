@@ -4,21 +4,21 @@
       "conteudo": "WaldyrZatta Junior",
       "autoria": "a teste",
       "modelo": "modelo1",
-      "favorito": false,
+      "favorito": true,
       "id": 1
     },
     {
       "conteudo": "Estou aprendendo com a Nai",
       "autoria": "desenvolvendo aprendiz",
       "modelo": "modelo2",
-      "favorito": false,
+      "favorito": true,
       "id": 2
     },
     {
       "conteudo": "angular o melhor",
       "autoria": "desenvolvedor",
       "modelo": "modelo3",
-      "favorito": false,
+      "favorito": true,
       "id": 3
     },
     {
@@ -74,14 +74,14 @@
       "conteudo": "Jose augusto",
       "autoria": "zatta",
       "modelo": "modelo2",
-      "favorito": true,
+      "favorito": false,
       "id": 11
     },
     {
       "conteudo": "Vera Lucia",
       "autoria": "zatta trindade",
       "modelo": "modelo1",
-      "favorito": true,
+      "favorito": false,
       "id": 12
     },
     {
